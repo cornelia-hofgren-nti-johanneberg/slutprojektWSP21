@@ -10,3 +10,8 @@ end
 
 def add_recept()
     recept = connect().execute("INSERT INTO")
+
+end
+
+
+#def user_register(username, password)
