@@ -18,6 +18,11 @@
 
 #main > article {
     flex: 1; height: 500px; margin: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #main > article:nth-child(1) {
@@ -30,5 +35,56 @@
 }
 #main > article:nth-child(3) {
     background-color: rgb(255, 247, 177);
+
+}
+
+.scroller {
+    width: 100%;
+    flex: 1;
+    overflow-y: scroll;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.scroller > div {
+    width: 90%;
+    background-color: rgb(254, 255, 209);
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+
+.scroller > div > img {
+    height: 70px;
+
+}
+
+.scroller > div h3 {
+    margin: 5px;
+
+}
+
+.scroller > div p {
+    margin: 5px;
+
+}
+.scroller > div > div {
+    flex: 1;
+    position: relative;
+}
+
+.scroller > div > div div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 
 }

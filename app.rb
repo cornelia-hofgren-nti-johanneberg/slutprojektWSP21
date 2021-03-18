@@ -10,6 +10,10 @@ get('/') do
     slim(:home)
 end
 
+get('/bank') do
+    slim(:bank)
+end
+
 #post('/users/') do
     #username = params["username"]
     #password = params["password"]
