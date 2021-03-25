@@ -11,7 +11,11 @@ get('/') do
 end
 
 get('/bank') do
-    slim(:bank)
+    db = SQLite3::Database.new("db/db.db")
+    db.results_as_hash = true
+    result = db.execute("SELECT * FROM receptbank")
+    p result
+    slim(:bank, locals:{recept:result})
 end
 
 #post('/users/') do
