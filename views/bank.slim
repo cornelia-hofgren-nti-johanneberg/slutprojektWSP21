@@ -2,97 +2,53 @@ header
     h1 class="titel" Receptbank 
     img id="icon1" src="/icon.svg"
 main id="main"
-    article 
-        p = recept 
+
     article 
         h1 förrätt
         article class="scroller"
             - recept.each do |item|
-                div
-                    img src="#{item[:picture]}" alt=""/
-                    div 
-                        h3 = item["name"]
-                        p = item["description"]
-            div 
-                img src="/begin.jpg" alt=""/
-                div    
-                    h3 Friterad Halloumi
-                    p gott hej eljaaglean bhlkjeakjbgkjea bean b alebmlesk ea b egbskl eb b eswh yr n htd r snh r yhn rd h br sh gsrd th yetjyu j td h dg yhj tyh sh tyf hn
-                    div 
-                        p 30 favoritmarkeringar 
-                        button heart 
-            div 
-                img src="/begin.jpg" alt=""/
-                div    
-                    h3 Friterad Halloumi
-                    p gott hej eljaaglean bhlkjeakjbgkjea bean b alebmlesk ea b egbskl eb b eswh yr n htd r snh r yhn rd h br sh gsrd th yetjyu j td h dg yhj tyh sh tyf hn
-                    div 
-                        p 30 favoritmarkeringar 
-                        button heart 
-            div 
-                img src="/begin.jpg" alt=""/
-                div    
-                    h3 Friterad Halloumi
-                    p gott hej eljaaglean bhlkjeakjbgkjea bean b alebmlesk ea b egbskl eb b eswh yr n htd r snh r yhn rd h br sh gsrd th yetjyu j td h dg yhj tyh sh tyf hn
-                    div 
-                        p 30 favoritmarkeringar 
-                        button heart 
-            div 
-                img src="/begin.jpg" alt=""/
-                div    
-                    h3 Friterad Halloumi
-                    p gott hej eljaaglean bhlkjeakjbgkjea bean b alebmlesk ea b egbskl eb b eswh yr n htd r snh r yhn rd h br sh gsrd th yetjyu j td h dg yhj tyh sh tyf hn
-                    div 
-                        p 30 favoritmarkeringar 
-                        button heart 
-            div 
-                img src="/begin.jpg" alt=""/
-                div    
-                    h3 Friterad Halloumi
-                    p gott hej eljaaglean bhlkjeakjbgkjea bean b alebmlesk ea b egbskl eb b eswh yr n htd r snh r yhn rd h br sh gsrd th yetjyu j td h dg yhj tyh sh tyf hn
-                    div 
-                        p 30 favoritmarkeringar 
-                        button heart 
-            div 
-                img src="/begin.jpg" alt=""/
-                div    
-                    h3 Friterad Halloumi
-                    p gott hej eljaaglean bhlkjeakjbgkjea bean b alebmlesk ea b egbskl eb b eswh yr n htd r snh r yhn rd h br sh gsrd th yetjyu j td h dg yhj tyh sh tyf hn
-                    div 
-                        p 30 favoritmarkeringar 
-                        button heart 
+                - if item["cg_id"] == 1
+                    div
+                        img src="#{item[:picture]}" alt=""/
+                        div 
+                            h3 = item["name"]
+                            p = item["description"]
+                            div 
+                                p 30 favoritmarkeringar 
+                                form action="recept/add" method="POST" 
+                                    input type="submit" id="submit" value="Heart" 
+                                    input type="number" style="display:none" value=item["id"] id="id" name="id"
 
     article 
         h1 huvudrätt
         article class="scroller"
-            div 
-                img src="/begin.jpg" alt=""/
-                div    
-                    h3 Friterad Halloumi
-                    p gott hej eljaaglean bhlkjeakjbgkjea bean b alebmlesk ea b egbskl eb b eswh yr n htd r snh r yhn rd h br sh gsrd th yetjyu j td h dg yhj tyh sh tyf hn
-                    div 
-                        p 30 favoritmarkeringar 
-                        button heart
-            div 
-                img src="/begin.jpg" alt=""/
-                div    
-                    h3 Friterad Halloumi
-                    p gott hej eljaaglean bhlkjeakjbgkjea bean b alebmlesk ea b egbskl eb b eswh yr n htd r snh r yhn rd h br sh gsrd th yetjyu j td h dg yhj tyh sh tyf hn
-                    div 
-                        p 30 favoritmarkeringar 
-                        button heart
-            
+            - recept.each do |item|
+                - if item["cg_id"] == 2
+                    div
+                        img src="#{item[:picture]}" alt=""/
+                        div 
+                            h3 = item["name"]
+                            p = item["description"]
+                            div 
+                                p 30 favoritmarkeringar 
+                                form action="recept/add" method="POST" 
+                                    input type="submit" id="submit" value="Heart" 
+                                    input type="number" style="display:none" value=item["id"] id="id" name="id"
 
 
                     
     article
         h1 dessert
         article class="scroller"
-             div 
-                img src="/begin.jpg" alt=""/
-                div    
-                    h3 Friterad Halloumi
-                    p gott hej eljaaglean bhlkjeakjbgkjea bean b alebmlesk ea b egbskl eb b eswh yr n htd r snh r yhn rd h br sh gsrd th yetjyu j td h dg yhj tyh sh tyf hn
-                    div 
-                        p 30 favoritmarkeringar 
-                        button heart
+            - recept.each do |item|
+                - if item["cg_id"] == 3
+                    div
+                        img src="#{item[:picture]}" alt=""/
+                        div 
+                            h3 = item["name"]
+                            p = item["description"]
+                            div 
+                                p 30 favoritmarkeringar 
+                                form action="recept/add" method="POST" 
+                                    input type="submit" id="submit" value="Heart" 
+                                    input type="number" style="display:none" value=item["id"] id="id" name="id"

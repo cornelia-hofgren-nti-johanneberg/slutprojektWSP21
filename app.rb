@@ -7,17 +7,31 @@ enable :sessions
 
 
 get('/') do
-    slim(:home)
+    recept = favorites(1)
+    p recept
+    slim(:home, locals:{recept:recept})
+    
 end
 
 get('/bank') do
     db = SQLite3::Database.new("db/db.db")
     db.results_as_hash = true
-    result = db.execute("SELECT * FROM receptbank")
+    result = db.execute("SELECT id,name,picture,description,cg_name,cg_id FROM receptbank JOIN categories ON receptbank.type=categories.cg_id WHERE receptbank.id NOT IN (SELECT recept_id FROM favorites WHERE user_id = 1)")
     p result
     slim(:bank, locals:{recept:result})
 end
 
+post('/recept/add') do
+    recept_id = params["id"]
+    like_recept(recept_id, 1)
+    redirect("/bank")
+end
+
+post('/recept/delete') do
+    fav_id = params["id"]
+    unlike_recept(fav_id, 1)
+    redirect("/")
+end
 #post('/users/') do
     #username = params["username"]
     #password = params["password"]
