@@ -14,7 +14,7 @@ main id="main"
                             h3 = item["name"]
                             p = item["description"]
                             div 
-                                p 30 favoritmarkeringar 
+                                p = item["likes"]
                                 form action="recept/add" method="POST" 
                                     input type="submit" id="submit" value="Heart" 
                                     input type="number" style="display:none" value=item["id"] id="id" name="id"

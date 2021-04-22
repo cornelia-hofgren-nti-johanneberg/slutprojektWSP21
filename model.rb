@@ -27,4 +27,17 @@ def favorites(user_id)
 end
 
 
-#def user_register(username, password)
+def register_user(username, password)
+    password_digest = BCrypt::Password.create(password)
+    connect().execute("INSERT INTO users (username,password) VALUES (?,?)", username, password_digest)
+end
+
+def login_user(username, password)
+    result = connect().execute("SELECT * FROM users WHERE username = ?", username)
+    p result[0]
+    p result[0]["password"]
+    if result[0] && BCrypt::Password.new(result[0]["password"]) == password
+        return result[0]["id"].to_i
+    end
+    return false
+end
