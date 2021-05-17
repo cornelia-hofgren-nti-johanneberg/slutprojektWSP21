@@ -19,6 +19,10 @@ header {
 #icon1 {
     height: 40px;
 }
+#heart {
+    height: 40px;
+}
+
 #main { 
     display: flex;
     flex-direction: row;

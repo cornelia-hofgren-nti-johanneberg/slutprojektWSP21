@@ -20,7 +20,6 @@ def unlike_recept(fav_id, user_id)
 end
 
 
-
 def favorites(user_id)
     recept = connect().execute("SELECT * FROM favorites JOIN receptbank ON favorites.recept_id = receptbank.id JOIN categories ON receptbank.type=categories.cg_id WHERE favorites.user_id = ?", user_id)
     return recept
@@ -40,4 +39,15 @@ def login_user(username, password)
         return result[0]["id"].to_i
     end
     return false
+end
+
+def is_admin(user_id)
+    result = connect().execute("SELECT * FROM users WHERE id = ? ", user_id)
+    p result
+    p user_id
+    return result[0] != nil && result[0]["admin"].to_i == 1
+end
+
+def addrecept(name, picture, description, type)
+    connect().execute("INSERT INTO receptbank(name, picture, description, type) VALUES(?,?,?,?)", name, picture, description, type)
 end

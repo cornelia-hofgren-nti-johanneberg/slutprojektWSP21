@@ -1,6 +1,7 @@
 header
     h1 class="titel" Favoritrecept 
-    img id="icon1" src="/icon.svg"
+    a href="/bank" 
+        img id="icon1" src="/icon.svg"
 main id="main"
     article 
         h1 förrätt
@@ -13,7 +14,7 @@ main id="main"
                             h3 = item["name"]
                             p = item["description"]
                             div 
-                                p 30 favoritmarkeringar 
+                                p = "#{item['likes']} likes" 
                                 form action="recept/delete" method="POST" 
                                     input type="submit" id="submit" value="Delete" 
                                     input type="number" style="display:none" value=item["fav_id"] id="id" name="id" 
@@ -28,7 +29,7 @@ main id="main"
                             h3 = item["name"]
                             p = item["description"]
                             div 
-                                p 30 favoritmarkeringar 
+                                p = "#{item['likes']} likes" 
                                 form action="recept/delete" method="POST" 
                                     input type="submit" id="submit" value="Delete" 
                                     input type="number" style="display:none" value=item["fav_id"] id="id" name="id"
@@ -43,7 +44,7 @@ main id="main"
                             h3 = item["name"]
                             p = item["description"]
                             div 
-                                p 30 favoritmarkeringar 
+                                p = "#{item['likes']} likes"
                                 form action="recept/delete" method="POST" 
                                     input type="submit" id="submit" value="Delete" 
                                     input type="number" style="display:none" value=item["fav_id"] id="id" name="id"

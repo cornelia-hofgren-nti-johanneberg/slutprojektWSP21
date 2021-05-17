@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'slim'
 require_relative './model.rb'
+require 'pp'
 
 enable :sessions
 
@@ -19,8 +20,12 @@ end
 get('/bank') do
     db = SQLite3::Database.new("db/db.db")
     db.results_as_hash = true
-    result = db.execute("SELECT count(favorites.fav_id) as likes, id,name,picture,description,cg_name,cg_id FROM receptbank JOIN categories ON receptbank.type=categories.cg_id JOIN favorites ON receptbank.id=favorites.recept_id WHERE receptbank.id NOT IN (SELECT recept_id FROM favorites WHERE user_id = ?) GROUP BY recept_id", session["id"])
-    p result
+
+    result = db.execute("select count(favorites.fav_id) as likes,id,name,picture,description,cg_name,cg_id from receptbank 
+    outer left join categories on receptbank.type=categories.cg_id 
+    outer left JOIN favorites ON receptbank.id=favorites.recept_id 
+    GROUP BY receptbank.id")
+
     slim(:bank, locals:{recept:result})
 end
 
@@ -67,8 +72,29 @@ end
 
 get('/login') do
     slim(:"loginreg/login")
-    
 end
+
+get('/admin') do
+    if session[:id] != nil
+        if is_admin(session[:id]) 
+            slim(:"admin")
+        end
+    end
+end
+
+post('/addrecept') do
+    namn = params["namn"]
+    bild = params["bild"]
+    beskrivning = params["beskrivning"]
+    kategori = params["kategori"]
+    if session[:id] != nil
+        if is_admin(session[:id]) 
+            addrecept(namn, bild, beskrivning, kategori)
+        end
+    end
+end
+
+
 #post('/users/') do
     #username = params["username"]
     #password = params["password"]
