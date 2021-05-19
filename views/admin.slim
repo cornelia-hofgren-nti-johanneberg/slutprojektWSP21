@@ -1,7 +1,23 @@
-form action="/addrecept" method="POST" 
-    input type="text" id="namn" name="namn" 
-    input type="text" id="bild" name="bild" 
-    input type="text" id="beskrivning" name="beskrivning" 
-    input type="number" id="kategori" name="kategori"  
-    input type="submit" id="submit" value="lägg till" 
+form action="/recept/add" method="POST" 
+    input type="text" id="namn" name="namn" placeholder="Namn"
+    input type="text" id="bild" name="bild" placeholder="Bild"
+    input type="text" id="beskrivning" name="beskrivning" placeholder="Bseskrivning"
+    input type="number" id="kategori" name="kategori" max="3" min="1" value="1"
+    input type="submit" id="submit" value="lägg till"
     
+article class="admin"
+    - recept.each do |item|
+        h3 = item["name"] 
+        p = item["description"]
+        img src="#{item[:picture]}" alt=""/
+        
+        form action="recept/delete" method="POST" 
+            input type="submit" id="submit" value="delete" 
+            input type="number" style="display:none" value=item["id"] id="id" name="id"
+       
+        form action="recept/update" method="POST" 
+            input type="text" value=item["name"] id="name" name="name"
+            input type="text" value=item["description"] id="description" name="description"
+            input type="number" value=item["type"] id="type" name="type" max="3" min="1" 
+            input type="submit" id="submit" value="update" 
+            input type="number" style="display:none" value=item["id"] id="id" name="id"

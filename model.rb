@@ -51,3 +51,22 @@ end
 def addrecept(name, picture, description, type)
     connect().execute("INSERT INTO receptbank(name, picture, description, type) VALUES(?,?,?,?)", name, picture, description, type)
 end
+
+def fetch_recepies()
+    return connect().execute("SELECT * FROM receptbank")
+end
+
+def delete(id)
+    result = connect().execute("SELECT * FROM receptbank WHERE id = ?", id)
+    if !result[0]
+        return false
+    end
+    connect().execute("DELETE FROM receptbank WHERE id = ?", id)
+    return true
+end
+
+def update(name, description, type, id)
+
+    connect().execute("UPDATE receptbank SET name = ?, description = ?, type = ? WHERE id=?", name, description, type, id)
+    return true
+end
