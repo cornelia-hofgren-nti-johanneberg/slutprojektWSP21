@@ -14,7 +14,7 @@ main id="main"
                             h3 = item["name"]
                             p = item["description"]
                             div 
-                                p = "#{item['likes']} likes" 
+                                p = "#{item['likes']}" 
                                 form action="recept/unlike" method="POST" 
                                     input type="submit" id="submit" value="Delete" 
                                     input type="number" style="display:none" value=item["fav_id"] id="id" name="id" 
@@ -29,7 +29,7 @@ main id="main"
                             h3 = item["name"]
                             p = item["description"]
                             div 
-                                p = "#{item['likes']} likes" 
+                                p = "#{item['likes']}" 
                                 form action="recept/unlike" method="POST" 
                                     input type="submit" id="submit" value="Delete" 
                                     input type="number" style="display:none" value=item["fav_id"] id="id" name="id"
@@ -44,7 +44,7 @@ main id="main"
                             h3 = item["name"]
                             p = item["description"]
                             div 
-                                p = "#{item['likes']} likes"
+                                p = "#{item['likes']}"
                                 form action="recept/unlike" method="POST" 
                                     input type="submit" id="submit" value="Delete" 
                                     input type="number" style="display:none" value=item["fav_id"] id="id" name="id"
